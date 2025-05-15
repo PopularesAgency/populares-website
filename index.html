@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Populares</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        /* Background animations */
+        @keyframes gradientAnimation {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+        
+        @keyframes float {
+            0% { transform: translatey(0px); }
+            50% { transform: translatey(-20px); }
+            100% { transform: translatey(0px); }
+        }
+        
+        .bg {
+            /* Rich gradient background */
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+        
+        /* Animated background elements */
+        .bg::before, .bg::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 0;
+        }
+        
+        .bg::before {
+            top: -100px;
+            right: -50px;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .bg::after {
+            bottom: -100px;
+            left: -50px;
+            width: 250px;
+            height: 250px;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Floating circles */
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 10s ease-in-out infinite;
+            z-index: 0;
+        }
+        
+        .circle:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: 25%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .circle:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 15%;
+            right: 15%;
+            animation-delay: 2s;
+            animation-duration: 7s;
+        }
+        
+        .circle:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            right: 20%;
+            animation-delay: 1s;
+            animation-duration: 8s;
+        }
+        
+        .bg {
+            /* Rich gradient background */
+            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            height: 100%;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+        }
+        
+        .content {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .logo {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
+            position: relative;
+            z-index: 2;
+        }
+        
+        .main-message {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(17, 25, 40, 0.6);
+            padding: 30px;
+            border-radius: 12px;
+            line-height: 1.6;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(17, 25, 40, 0.6);
+            box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .social-icons {
+            margin: 20px 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 24px;
+            text-decoration: none;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            transform: scale(1.2);
+            filter: brightness(1.2);
+        }
+        
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        p {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                max-width: 300px;
+            }
+            
+            .main-message {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg">
+        <!-- Floating circles for decoration -->
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        
+        <div class="content">
+            <div class="logo">
+                <img src="logo.png" alt="Populares Logo" style="width: 100%;">
+            </div>
+            
+            <div class="main-message">
+                <p>This website is currently under maintenance. </p>
+                <p>If you need to get in touch please email info@populares.co or call +61 2 7229 1259</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="social-icons">
+                <!-- LinkedIn icon -->
+                <a href="https://www.linkedin.com/company/67770969/" target="_blank">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+            </div>
+            <p>© 2025 by Populares Agency</p>
+        </div>
+    </div>
+</body>
+</html>
