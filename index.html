@@ -4,234 +4,289 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Populares</title>
+    <meta name="description" content="Populares — the website is currently under maintenance. Contact us at info@populares.co or +61 2 7229 1259.">
+    <meta name="theme-color" content="#08193D">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Schibsted+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
     <style>
-        body, html {
-            height: 100%;
+        /* Brand palette (Populares brand on a page, 2026) */
+        :root {
+            --ignition: #DEFF4A;
+            --foundation: #08193D;
+            --momentum: #11265D;
+            --insight: #BDE5F3;
+            --truth: #FFFFFF;
+            --resolve: #F1F1F1;
+            --measured: #B3B3B3;
+
+            --font-heading: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+            --font-body: "Atkinson Hyperlegible", "Helvetica Neue", Arial, sans-serif;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        html, body {
             margin: 0;
-            font-family: Arial, sans-serif;
-            color: white;
-            overflow-x: hidden;
+            min-height: 100%;
         }
-        
-        /* Background animations */
-        @keyframes gradientAnimation {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
+
+        body {
+            background: var(--foundation);
+            color: var(--truth);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
         }
-        
-        @keyframes float {
-            0% { transform: translatey(0px); }
-            50% { transform: translatey(-20px); }
-            100% { transform: translatey(0px); }
+
+        .page {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+            min-height: 100vh;
+            min-height: 100dvh;
         }
-        
-        .bg {
-            /* Rich gradient background */
-            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
-            background-size: 400% 400%;
-            animation: gradientAnimation 15s ease infinite;
-            height: 100%;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-        }
-        
-        /* Animated background elements */
-        .bg::before, .bg::after {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            z-index: 0;
-        }
-        
-        .bg::before {
-            top: -100px;
-            right: -50px;
-            animation: float 8s ease-in-out infinite;
-        }
-        
-        .bg::after {
-            bottom: -100px;
-            left: -50px;
-            width: 250px;
-            height: 250px;
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        /* Floating circles */
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            animation: float 10s ease-in-out infinite;
-            z-index: 0;
-        }
-        
-        .circle:nth-child(1) {
-            width: 200px;
-            height: 200px;
-            top: 25%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-        
-        .circle:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            top: 15%;
-            right: 15%;
-            animation-delay: 2s;
-            animation-duration: 7s;
-        }
-        
-        .circle:nth-child(3) {
-            width: 100px;
-            height: 100px;
-            bottom: 20%;
-            right: 20%;
-            animation-delay: 1s;
-            animation-duration: 8s;
-        }
-        
-        .bg {
-            /* Rich gradient background */
-            background: linear-gradient(135deg, #1a2980 0%, #26d0ce 100%);
-            background-size: 400% 400%;
-            animation: gradientAnimation 15s ease infinite;
-            height: 100%;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-        }
-        
+
+        /* Content panel */
         .content {
-            text-align: center;
-            padding: 20px;
-            margin-top: 30px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: clamp(32px, 6vw, 80px);
+            overflow: hidden;
+        }
+
+        .logo {
+            display: block;
+            width: min(340px, 100%);
+            height: auto;
+        }
+
+        .message {
+            margin: auto 0;
+            padding: 64px 0;
+            max-width: 560px;
             position: relative;
             z-index: 1;
         }
-        
-        .logo {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 20px;
-            filter: drop-shadow(0 0 15px rgba(255,255,255,0.3));
-            position: relative;
-            z-index: 2;
+
+        .eyebrow {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--ignition);
+            margin: 0 0 20px;
         }
-        
-        .main-message {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: rgba(17, 25, 40, 0.6);
-            padding: 30px;
-            border-radius: 12px;
-            line-height: 1.6;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            z-index: 2;
-        }
-        
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(17, 25, 40, 0.6);
-            box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            z-index: 2;
-        }
-        
-        .social-icons {
-            margin: 20px 0;
-        }
-        
-        .social-icons a {
-            color: white;
-            margin: 0 10px;
-            font-size: 24px;
-            text-decoration: none;
-            transition: transform 0.3s ease, filter 0.3s ease;
-        }
-        
-        .social-icons a:hover {
-            transform: scale(1.2);
-            filter: brightness(1.2);
-        }
-        
+
         h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: clamp(40px, 5.5vw, 72px);
+            line-height: 1.02;
+            letter-spacing: -0.02em;
+            margin: 0 0 24px;
         }
-        
-        p {
-            font-size: 18px;
-            margin-bottom: 15px;
+
+        .lede {
+            font-size: clamp(17px, 1.4vw, 20px);
+            line-height: 1.6;
+            color: var(--resolve);
+            margin: 0 0 36px;
         }
-        
-        @media (max-width: 768px) {
+
+        /* CTAs — square-cornered, per brand */
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-weight: 500;
+            font-size: 17px;
+            text-decoration: none;
+            padding: 16px 28px;
+            transition: transform 0.15s ease, filter 0.15s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.05);
+        }
+
+        .btn-primary {
+            background: var(--ignition);
+            color: var(--foundation);
+        }
+
+        .btn-secondary {
+            background: var(--insight);
+            color: var(--momentum);
+        }
+
+        a:focus-visible {
+            outline: 3px solid var(--ignition);
+            outline-offset: 3px;
+        }
+
+        .btn-primary:focus-visible {
+            outline-color: var(--truth);
+        }
+
+        .footer {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 14px;
+            color: var(--measured);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .footer a {
+            display: inline-flex;
+            color: var(--truth);
+            transition: color 0.15s ease;
+        }
+
+        .footer a:hover {
+            color: var(--ignition);
+        }
+
+        /* Pixel pattern graphic */
+        .pattern {
+            position: absolute;
+            right: clamp(24px, 4vw, 56px);
+            bottom: clamp(24px, 4vw, 56px);
+            width: 140px;
+            height: auto;
+            opacity: 0.9;
+            pointer-events: none;
+        }
+
+        /* Imagery panel */
+        .visual {
+            position: relative;
+            background: var(--insight);
+            overflow: hidden;
+        }
+
+        .visual img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 46% 30%;
+        }
+
+        @media (max-width: 900px) {
+            .page {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 1fr;
+            }
+
+            .visual {
+                order: -1;
+                height: 42vh;
+                min-height: 260px;
+            }
+
+            .visual img {
+                object-position: 46% 25%;
+            }
+
+            .content {
+                padding: 32px 24px;
+            }
+
             .logo {
-                max-width: 300px;
+                width: 240px;
             }
-            
-            .main-message {
-                padding: 20px;
+
+            .message {
+                padding: 48px 0 56px;
             }
-            
-            h1 {
-                font-size: 28px;
+
+            .pattern {
+                width: 96px;
+                right: 24px;
+                bottom: 24px;
             }
-            
-            p {
-                font-size: 16px;
+        }
+
+        @media (max-width: 480px) {
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .btn, .footer a {
+                transition: none;
+            }
+
+            .btn:hover {
+                transform: none;
             }
         }
     </style>
 </head>
 <body>
-    <div class="bg">
-        <!-- Floating circles for decoration -->
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        
-        <div class="content">
-            <div class="logo">
-                <img src="logo.png" alt="Populares Logo" style="width: 100%;">
+    <main class="page">
+        <section class="content">
+            <img class="logo" src="logo.svg" alt="Populares" width="598" height="81">
+
+            <div class="message">
+                <p class="eyebrow">The Art + Science of Persuasion</p>
+                <h1>We'll be back shortly.</h1>
+                <p class="lede">Our website is currently under maintenance. If you need to get in touch, we'd love to hear from you.</p>
+                <div class="actions">
+                    <a class="btn btn-primary" href="mailto:info@populares.co">info@populares.co</a>
+                    <a class="btn btn-secondary" href="tel:+61272291259">+61 2 7229 1259</a>
+                </div>
             </div>
-            
-            <div class="main-message">
-                <p>This website is currently under maintenance. </p>
-                <p>If you need to get in touch please email info@populares.co or call +61 2 7229 1259</p>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <div class="social-icons">
-                <!-- LinkedIn icon -->
-                <a href="https://www.linkedin.com/company/67770969/" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white">
+
+            <footer class="footer">
+                <a href="https://www.linkedin.com/company/67770969/" target="_blank" rel="noopener" aria-label="Populares on LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                     </svg>
                 </a>
-            </div>
-            <p>© 2025 by Populares Agency</p>
+                <p>&copy; <span id="year">2026</span> Populares Agency</p>
+            </footer>
+
+            <!-- Pixel pattern, from the brand "Graphics & patterns" set -->
+            <svg class="pattern" viewBox="0 0 140 140" aria-hidden="true">
+                <rect x="0" y="0" width="14" height="14" fill="#FFFFFF" opacity="0.25"/>
+                <rect x="42" y="0" width="14" height="14" fill="#FFFFFF" opacity="0.25"/>
+                <rect x="14" y="14" width="14" height="14" fill="#FFFFFF" opacity="0.25"/>
+                <rect x="70" y="42" width="14" height="14" fill="#FFFFFF" opacity="0.4"/>
+                <rect x="98" y="42" width="14" height="14" fill="#FFFFFF" opacity="0.4"/>
+                <rect x="42" y="84" width="14" height="14" fill="#DEFF4A"/>
+                <rect x="98" y="98" width="14" height="14" fill="#FFFFFF" opacity="0.6"/>
+                <rect x="112" y="112" width="14" height="14" fill="#FFFFFF" opacity="0.6"/>
+                <rect x="126" y="126" width="14" height="14" fill="#DEFF4A"/>
+            </svg>
+        </section>
+
+        <div class="visual">
+            <img src="bust.jpg" alt="" width="2000" height="1159">
         </div>
-    </div>
+    </main>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
